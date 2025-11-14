@@ -246,7 +246,7 @@
 						onclick="openapp('explorer');apps.explorer.goto('C:/Users/GANESH/Document');hide_startmenu();">
 						<img src="icon/folder/docs.svg">
 						<p>Documents</p>
-				<!--		<content class="Opic"></content>	-->
+			<!--			<content class="Opic"></content>		-->
 					</a>
 					<a class="a sm-app enable"
 						onclick="openapp('explorer');apps.explorer.goto('C:/Users/GANESH/Picture');hide_startmenu();">
@@ -261,14 +261,21 @@
 				</div>
 				<div class="tool">
 					<p style="font-size: 40px;margin-bottom: -10px;" class="time">12:00</p>
-					<p class="date">Monday, 12 Nov 2023</p>
+					<p class="date">Monday, 12 Nov 2025</p>
+			<span>
 					<a class="a btn btn-icon power" win12_title="Power" onclick="$(this).addClass('show')">
-						<span class="bi bi-power"></span>
+		<!--				<span class="bi bi-power"></span>	-->
+		</span>
 						<i class="bi bi-power" onclick="$('#start-menu').removeClass('show');
 						setTimeout(() => {window.location='shutdown.html';},200);" win12_title="Shut Down"></i>
+						
+				
+					
+					<a class="a btn btn-icon power" win12_title="Power" onclick="$(this).addClass('show')">
 						<i class="bi bi-arrow-counterclockwise" onclick="$('#start-menu').removeClass('show');
 						setTimeout(() => {window.location='reload.html';},200);" win12_title="Restart"></i>
 					</a>
+			
 					<a class="a btn btn-icon big" win12_title="Full-screen Mode" onclick="
 					if($('#start-menu').hasClass('max')){
 						$('#start-menu>#s-m-r>.row1>.tool>.btn-icon.big').html('<i class=\'bi bi-arrows-angle-expand\'></i>');
@@ -280,6 +287,7 @@
 					">
 						<i class="bi bi-arrows-angle-expand"></i>
 					</a>
+			
 				</div>
 			</div>
 			<div class="pinned">
@@ -2889,7 +2897,7 @@
 	<script src="data/tasks.js"></script>
 	<script src="desktop.js"></script>
 	<script src="module/tab.js"></script>
-	<script src="scripts/setting_getTime.js"></script><!-- 设置页面获取时间逻辑 @Junchen Yi 2023-9-17-->
+	<script src="scripts/setting_getTime.js"></script>
 	<script src="https://fastly.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js" async></script>
 	<!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 	<script defer src="https://pyscript.net/latest/pyscript.js"></script> -->         <!-- PyScript, 已弃用 -->
