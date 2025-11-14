@@ -3118,10 +3118,41 @@ let copilot = {
 }
 // 日期、时间
 let da = new Date();
-let date = `${[' Sunday ', '  Monday ', '  Tuesday ', '  Wednesday ', '  Thursday ', '  Friday ', '  Saturday '][da.getDay()]},     ${da.getFullYear()}-${(da.getMonth() + 1).toString().padStart(2, '0')}-${da.getDate().toString().padStart(2, '0')} `
+let date = `${[' Sunday ', ' Monday ', ' Tuesday ', ' Wednesday ', ' Thursday ', ' Friday ', ' Saturday '][da.getDay()]},     ${da.getDate().toString().padStart(2, '0')}-${(da.getMonth() + 1).toString().padStart(2, '0')}-${da.getFullYear()} `
+//let date = `${[' Sunday ', '  Monday ', '  Tuesday ', '  Wednesday ', '  Thursday ', '  Friday ', '  Saturday '][da.getDay()]},     ${da.getFullYear()}-${(da.getMonth() + 1).toString().padStart(2, '0')}-${da.getDate().toString().padStart(2, '0')} `
 $('#s-m-r>.row1>.tool>.date').text(date);
-$('.dock.date>.date').text(`${da.getFullYear()}/${(da.getMonth() + 1).toString().padStart(2, '0')}/${da.getDate().toString().padStart(2, '0')}`);
+$('.dock.date>.date').text(`${da.getDate().toString().padStart(2, '0')}-${(da.getMonth() + 1).toString().padStart(2, '0')}-${da.getFullYear()}`);
+// $('.dock.date>.date').text(`${da.getFullYear()}/${(da.getMonth() + 1).toString().padStart(2, '0')}/${da.getDate().toString().padStart(2, '0')}`); 
 $('#datebox>.tit>.date').text(date);
+
+
+function loadtime() {
+    let d = new Date();
+    let hours = d.getHours();
+    let minutes = d.getMinutes().toString().padStart(2, '0');
+
+    // 1. Determine AM or PM
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+
+    // 2. Convert to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12; // The hour '0' should be '12'
+    let hoursStr = hours.toString().padStart(2, '0');
+
+    // 3. Create the final time string
+    let time = `${hoursStr}:${minutes} ${ampm}`;
+
+    // 4. Update your elements
+    $('#s-m-r>.row1>.tool>.time').text(time);
+    $('.dock.date>.time').text(time);
+    $('#datebox>.tit>.time').text(time);
+}
+
+
+
+
+/*
+
 function loadtime() {
     let d = new Date();
     let time = `${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`
@@ -3129,6 +3160,11 @@ function loadtime() {
     $('.dock.date>.time').text(time);
     $('#datebox>.tit>.time').text(time);
 }
+
+*/
+
+
+
 apps.setting.theme_get();//提前加载主题
 loadtime();
 setTimeout('loadtime();setInterval(loadtime, 1000);', 1000 - da.getMilliseconds());//修复时间不精准的问题。以前的误差：0-999毫秒；现在：几乎没有
