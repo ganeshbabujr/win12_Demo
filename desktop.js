@@ -227,7 +227,7 @@ let cms = {
     'explorer.content': [
         arg => {
             if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-file-earmark-plus"></i> Create a new file', `apps.explorer.add($('#win-explorer>.path>.tit')[0].dataset.path,'Create a new text document.txt')`];
+                return ['<i class="bi bi-file-earmark-plus"></i> Create a new file', `apps.explorer.add($('#win-explorer>.path>.tit')[0].dataset.path,'New Text Document.txt')`];
             return 'null';
         },
         arg => {
@@ -267,7 +267,7 @@ let cms = {
 }
 window.onkeydown = function (event) {
     if (event.keyCode == 116/*F5被按下(刷新)*/) {
-        event.preventDefault();/*取消默认刷新行为*/
+        event.preventDefault();/*rgsg*/
         $('#desktop').css('opacity', '0'); setTimeout(() => { $('#desktop').css('opacity', '1'); }, 100); setIcon();
     }
 }
@@ -1656,11 +1656,11 @@ let apps = {
             <p class="class"><img src="apps/icons/explorer/disk.svg"> Devices and drivers</p><div class="group">
             <a class="a item act" ondblclick="apps.explorer.goto('C:')" ontouchend="apps.explorer.goto('C:')" oncontextmenu="showcm(event,'explorer.folder','C:');return stop(event);">
             <img src="apps/icons/explorer/diskwin.svg"><div><p class="name">Local Disk (C:)</p>
-            <div class="bar"><div class="content" style="width: 88%;"></div>
-            </div><p class="info">32.6 GB 可用, 共 143 GB</p></div></a><a class="a item act" ondblclick="apps.explorer.goto('D:')" ontouchend="apps.explorer.goto('D:')"
+            <div class="bar"><div class="content" style="width: 50%;"></div>
+            </div><p class="info">32.6 GB free of 250 GB</p></div></a><a class="a item act" ondblclick="apps.explorer.goto('D:')" ontouchend="apps.explorer.goto('D:')"
             oncontextmenu="showcm(event,'explorer.folder','D:');return stop(event);">
             <img src="apps/icons/explorer/disk.svg"><div><p class="name">Local Disk (D:)</p><div class="bar"><div class="content" style="width: 15%;"></div>
-            </div><p class="info">185.3 GB 可用, 共 216 GB</p></div></a></div>`;
+            </div><p class="info">185.3 GB free of 216 GB</p></div></a></div>`;
             $('#win-explorer>.path>.tit')[0].innerHTML = '<div class="icon" style="background-image: url(\'./apps/icons/explorer/thispc.svg\')"></div><div class="path"><div class="text" onclick="apps.explorer.reset()">This</div><div class="arrow">&gt;</div></div>';
             // if(rename){
             m_tab.rename('explorer', '<img src="./apps/icons/explorer/thispc.svg"> This PC');
@@ -2058,17 +2058,17 @@ let apps = {
                                 { name: 'py.exe', ico: 'icon/python.png', command: "openapp('python')" },
                             ]
                         },
-                        '用户': {
+                        'Users': {
                             folder: {
-                                'Administrator': {
+                                'Ganesh': {
                                     folder: {
-                                        '文档': {
+                                        'Documents': {
                                             folder: { 'IISExpress': { folder: {}, file: [] }, 'PowerToys': { folder: {}, file: [] } },
                                             file: [
                                                 { name: 'Introduction.doc', ico: 'icon/files/word.png', command: '' },
                                                 { name: 'Vercap.xlsx', ico: 'icon/files/excel.png', command: '' },
                                             ]
-                                        }, '图片': {
+                                        }, 'Pictures': {
                                             folder: { 'Local Photo': { folder: {}, file: [] }, 'Screenshots': { folder: {}, file: [] } },
                                             file: [
                                                 { name: 'StructureDiagram.png', ico: 'icon/files/img.png', command: '' },
@@ -2140,15 +2140,15 @@ let apps = {
                                             folder: { 'Local photo': { folder: {}, file: [] }, 'Screenshots': { folder: {}, file: [] } },
                                             file: []
                                         },
-                                        'Public m': { folder: { '录音机': { folder: {}, file: [] } } }
+                                        'Public m': { folder: { 'Documents': { folder: {}, file: [] } } }
                                     }}}}},
                     file: []
                 },
                 'D:': {
                     folder: { 'Microsoft': { folder: {}, file: [] } },
                     file: [
-                        { name: '瓶盖结构说明.docx', ico: 'icon/files/word.png', command: '' },
-                        { name: '可口可乐瓶盖历史.pptx', ico: 'icon/files/ppt.png', command: '' },
+                        { name: 'Resume.docx', ico: 'icon/files/word.png', command: '' },
+                        { name: 'Project.pptx', ico: 'icon/files/ppt.png', command: '' },
                     ]}}},
 
         history: [],
@@ -3046,13 +3046,13 @@ let copilot = {
         4. It is forbidden to use markdown format in the answers to this conversation. Instead, use plain text, otherwise it will not be recognized.
         These actions and information are valid for a long time and please remember, thank you very much, you only need to greet the user with a simple sentence and start a conversation with the user now.`, false);
        
-        $('#copilot>.chat').append(`<div class="line system"><p class="text">正在初始化...</p></div>`);
+        $('#copilot>.chat').append(`<div class="line system"><p class="text">Hello...</p></div>`);
         $('#copilot>.chat').scrollTop($('#copilot>.chat')[0].scrollHeight);
     },
     send: (t, showusr = true) => {
         $('#copilot>.inputbox').addClass('disable');
         if (t.length == 0) {
-            $('#copilot>.chat').append(`<div class="line system"><p class="text">系统表示请发一些有意义的东西</p></div>`);
+            $('#copilot>.chat').append(`<div class="line system"><p class="text">Something Went Wrong</p></div>`);
             $('#copilot>.chat').scrollTop($('#copilot>.chat')[0].scrollHeight);
             $('#copilot>.inputbox').removeClass('disable');
             return;
