@@ -505,8 +505,8 @@ let nts = {
         cnt: `<p class="tit">Feedback</p>
             <p>We attach great importance to user experience and feedback</p>
             <list class="new">
-                <a class="a" onclick="window.open('https://github.com/lttthedev/lttthedev.github.io/issues','_blank');" win12_title="Open link in new browser window" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)">Submit an issue on github (a github account is required and will receive higher attention)</a>
-                <a class="a" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__SDw7SZURjUzOUo0VEVXU1pMWlFTSUVGWDNYWU1EWS4u','_blank');" win12_title="Open link in new browser window" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)">Send feedback on Microsoft Forms (no account required, will be taken seriously)</a>
+                <a class="a" onclick="window.open('https://github.com/ganeshbabujr/win12_Demo/issues','_blank');" win12_title="Open link in new browser window" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)">Submit an issue on github (a github account is required and will receive higher attention)</a>
+                <a class="a" onclick="window.open('','_blank');" win12_title="Open link in new browser window" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)">Send feedback on Microsoft Forms (no account required, will be taken seriously)</a>
             </list>`,
         btn: [
             { type: 'main', text: 'Close', js: 'closenotice();' },
@@ -4067,11 +4067,7 @@ function sendToSw(msg) {
     navigator.serviceWorker.controller.postMessage(msg);
 }
 
-/**
- * 将秒数换算为可读的时间格式
- * @param {number} second 秒数
- * @returns 将秒数格式化为  1 天 8 小时 43 分钟 26 秒类似的格式
- */
+
 function calcTimeString(second) {
     let timeStr = '';
     const days = Math.floor(second / (24 * 60 * 60));
